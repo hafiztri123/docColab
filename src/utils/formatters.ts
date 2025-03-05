@@ -27,7 +27,6 @@ export const formatTime = (dateString: string): string => {
  * Format date and time together (e.g., "Feb 15, 2025 at 2:30 PM")
  */
 export const formatDateTime = (dateString: string): string => {
-    const date = new Date(dateString);
     return `${formatDate(dateString)} at ${formatTime(dateString)}`;
 };
 

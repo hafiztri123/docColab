@@ -6,7 +6,6 @@ import {
     DocumentUpdateRequest,
     DocumentListResponse,
     DocumentHistoryResponse,
-    DocumentAnalytics
 } from '../types/document.types';
 
 export const getDocuments = async (
