@@ -3,11 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { getUserAnalytics } from '../../services/analyticsService';
 import { UserAnalytics } from '../../types/analytics.types';
 import ActivityChart from '../../components/dashboard/ActivityChart';
-import { useAuth } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
 const UserAnalyticsPage: React.FC = () => {
-    const { user } = useAuth();
     const [analytics, setAnalytics] = useState<UserAnalytics | null>(null);
     const [period, setPeriod] = useState<'day' | 'week' | 'month' | 'year'>('month');
     const [isLoading, setIsLoading] = useState(true);

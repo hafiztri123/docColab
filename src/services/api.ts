@@ -10,6 +10,14 @@ const api = axios.create({
     },
 });
 
+interface ErrorResponse {
+    error?: {
+        code: string;
+        message: string;
+        details?: any; // Adjust the type of details based on your API's response
+    };
+}
+
 // Request interceptor for adding auth token
 api.interceptors.request.use(
     (config) => {
@@ -54,8 +62,12 @@ api.interceptors.response.use(
 
         // Format error response
         let errorMessage = 'An unexpected error occurred';
-        if (error.response?.data?.error?.message) {
-            errorMessage = error.response.data.error.message;
+
+        // Cast error.response.data to ErrorResponse
+        const errorData = error.response?.data as ErrorResponse;
+
+        if (errorData?.error?.message) {
+            errorMessage = errorData.error.message;
         } else if (error.message) {
             errorMessage = error.message;
         }
@@ -63,8 +75,8 @@ api.interceptors.response.use(
         return Promise.reject({
             status: error.response?.status,
             message: errorMessage,
-            code: error.response?.data?.error?.code || 'unknown_error',
-            details: error.response?.data?.error?.details || null,
+            code: errorData?.error?.code || 'unknown_error',
+            details: errorData?.error?.details || null,
         });
     }
 );

@@ -7,7 +7,6 @@ import { useAuth } from '../../context/AuthContext';
 import { UserAnalytics } from '../../types/analytics.types';
 import { DocumentListItem } from '../../types/document.types';
 import ActivityChart from './ActivityChart';
-import DocumentStats from './DocumentStats';
 import RecentDocuments from './RecentDocuments';
 
 const DashboardPage: React.FC = () => {

@@ -29,7 +29,7 @@ const DocumentEditor: React.FC<DocumentEditorProps> = ({ isNew = false }) => {
     const navigate = useNavigate();
 
     // WebSocket connection for real-time collaboration (only for existing documents)
-    const { status: wsStatus, onMessage, sendCursorPosition, sendDocumentUpdate, error: wsError } =
+    const { status: wsStatus, onMessage, sendCursorPosition, sendDocumentUpdate } =
         useWebSocket(id || '');
 
     // Fetch document data if editing existing document
