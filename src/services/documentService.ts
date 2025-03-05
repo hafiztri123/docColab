@@ -6,6 +6,7 @@ import {
     DocumentUpdateRequest,
     DocumentListResponse,
     DocumentHistoryResponse,
+    DocumentAnalyticsResponse
 } from '../types/document.types';
 
 export const getDocuments = async (
@@ -63,8 +64,8 @@ export const restoreDocumentVersion = async (id: string, version: number): Promi
 export const getDocumentAnalytics = async (
     id: string,
     period = 'month'
-): Promise<DocumentAnalytics> => {
-    const response = await api.get<DocumentAnalytics>(`/documents/${id}/analytics`, {
+): Promise<DocumentAnalyticsResponse> => {
+    const response = await api.get<DocumentAnalyticsResponse>(`/documents/${id}/analytics`, {
         params: { period }
     });
     return response.data;

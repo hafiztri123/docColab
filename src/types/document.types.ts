@@ -77,3 +77,33 @@ export interface DocumentListResponse {
         total_pages: number;
     };
 }
+
+// DocumentAnalyticsResponse
+export interface DocumentAnalyticsResponse {
+    views: DocumentViewsResponse;
+    edits: DocumentEditsResponse;
+}
+
+// DocumentViewsResponse
+export interface DocumentViewsResponse {
+    total: number; // int64 in Go translates to number in TypeScript
+    uniqueUsers: number; // int64 in Go translates to number in TypeScript
+    timeline: Array<{
+        date: string; // Date as a string
+        count: number; // int in Go translates to number in TypeScript
+    }>;
+}
+
+// DocumentEditsResponse
+export interface DocumentEditsResponse {
+    total: number; // int64 in Go translates to number in TypeScript
+    byUsers: Array<{
+        userId: string; // uuid.UUID in Go translates to string in TypeScript
+        userName: string;
+        count: number; // int in Go translates to number in TypeScript
+    }>;
+    timeline: Array<{
+        date: string; // Date as a string
+        count: number; // int in Go translates to number in TypeScript
+    }>;
+}
